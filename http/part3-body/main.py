@@ -22,7 +22,7 @@ def create_order(order: dict = Body(...)):
     }
     """
     order_id = len(orders) + 1
-    orders.append({"order_id": order_id, **order})
+    orders.append({"order_id": order_id, "detail": order})
 
     item = MENU.get(order.get("item_id", ""), {})
     total = item.get("price", 0) * order.get("quantity", 1)

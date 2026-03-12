@@ -21,7 +21,8 @@ def get_menu_item(item_id: str):
     """用 Path 取得指定餐點"""
     if item_id not in MENU:
         return {"error": f"找不到餐點：{item_id}"}
-    return {"item_id": item_id, **MENU[item_id]}
+    item = MENU[item_id]
+    return {"item_id": item_id, "name": item["name"], "price": item["price"]}
 
 
 @app.get("/menu/{item_id}/reviews/{review_id}")
