@@ -11,15 +11,32 @@
 ```python
 class EventRejected(Exception):
     """事件被系統拒絕（格式正確但邏輯不接受）"""
-    def __init__(self, reason: str, event_type: str = "unknown"):
+    def __init__(self, reason: str, event_type: str = "unknown", code: str = "EVENT_REJECTED"):
         self.reason = reason
         self.event_type = event_type
+        self.code = code
 
 
 class EventNotFound(Exception):
     """事件對象不存在"""
-    def __init__(self, reason: str):
+    def __init__(self, reason: str, code: str = "NOT_FOUND"):
         self.reason = reason
+        self.code = code
+```
+
+在 endpoint 拋出時指定 `code`：
+
+```python
+raise EventRejected(
+    reason=f"Unsupported event type: {event_type}",
+    event_type=event_type,
+    code="EVENT_TYPE_NOT_SUPPORTED"
+)
+
+raise EventNotFound(
+    reason=f"User {event.user_id} not found",
+    code="USER_NOT_FOUND"
+)
 ```
 
 ---
@@ -36,7 +53,8 @@ async def handle_event_rejected(request, exc):
         content={
             "status": "rejected",
             "event_type": exc.event_type,
-            "reason": exc.reason
+            "reason": exc.reason,
+            "code": exc.code
         }
     )
 
@@ -47,7 +65,8 @@ async def handle_event_not_found(request, exc):
         status_code=404,
         content={
             "status": "rejected",
-            "reason": exc.reason
+            "reason": exc.reason,
+            "code": exc.code
         }
     )
 ```
@@ -66,6 +85,7 @@ async def handle_validation_error(request, exc):
         content={
             "status": "rejected",
             "reason": "Event does not match schema",
+            "code": "SCHEMA_INVALID",
             "details": exc.errors()
         }
     )
@@ -87,6 +107,7 @@ curl -X POST http://127.0.0.1:8000/events/click \
 {
   "status": "rejected",
   "reason": "Event does not match schema",
+  "code": "SCHEMA_INVALID",
   "details": [...]
 }
 ```
@@ -107,7 +128,8 @@ curl -X POST http://127.0.0.1:8000/events/unknown_action \
 {
   "status": "rejected",
   "event_type": "unknown_action",
-  "reason": "Unsupported event type: unknown_action"
+  "reason": "Unsupported event type: unknown_action",
+  "code": "EVENT_TYPE_NOT_SUPPORTED"
 }
 ```
 
