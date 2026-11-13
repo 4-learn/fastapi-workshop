@@ -3,9 +3,9 @@ AI Guardrail Workshop
 
 任務：
 1. 定義 Prediction 和 DecisionResponse schema
-2. 實作 evaluate() — 根據 confidence 決定行動
+2. 實作 evaluate() — 根據 label 和 confidence 決定行動
 3. 實作 to_event() — 把決策轉成事件
-4. 用 /evaluate endpoint 測試三種情境
+4. 用 /evaluate endpoint 測試四種情境
 """
 
 from fastapi import FastAPI
@@ -25,7 +25,7 @@ class Prediction(BaseModel):
 # TODO: 定義 RiskLevel enum (HIGH, MEDIUM, LOW)
 
 
-# TODO: 定義 Action enum (AUTO_BLOCK, REQUIRE_REVIEW, DEFER)
+# TODO: 定義 Action enum (AUTO_BLOCK, REQUIRE_REVIEW, DEFER, NONE)
 
 
 # TODO: 定義 DecisionResponse model
@@ -54,9 +54,10 @@ THRESHOLDS = {
 
 def evaluate(prediction: Prediction):
     """
-    根據 prediction.confidence 回傳 DecisionResponse
+    根據 prediction.label 和 prediction.confidence 回傳 DecisionResponse
 
-    規則：
+    規則（由上往下判斷）：
+    - label 不是 "fraud" → NONE, LOW（模型說正常，信心值再高也不處理）
     - >= 0.9 → AUTO_BLOCK, HIGH
     - >= 0.6 → REQUIRE_REVIEW, MEDIUM
     - < 0.6  → DEFER, LOW
