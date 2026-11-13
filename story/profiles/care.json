@@ -2,6 +2,7 @@
   "customer": "care",
   "handler_role": "值班護理師",
   "locations": ["room_301", "room_302"],
+  "escalation_strategy": "by_minutes",
   "event_types": {
     "fall_detected": {"severity": "high", "escalate_after_minutes": 2},
     "bed_exit": {"severity": "medium", "escalate_after_minutes": 2}
