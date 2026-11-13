@@ -1,0 +1,5 @@
+{"event_type": "fall_detected", "location": "room_301", "source": "camera_11", "confidence": 0.93, "occurred_at": "2026-03-02T02:40:00", "detail": {"posture": "lying"}}
+{"event_type": "bed_exit", "location": "room_302", "source": "wristband_07", "confidence": 0.86, "occurred_at": "2026-03-02T02:55:00", "detail": {"minutes_out_of_bed": 6}}
+{"event_type": "fall_detected", "location": "room_302", "source": "camera_12", "confidence": 0.64, "occurred_at": "2026-03-02T03:10:00", "detail": {"posture": "sitting"}}
+{"event_type": "fall_detected", "location": "room_301", "source": "camera_11", "confidence": 0.97, "occurred_at": "2026-03-02T05:20:00", "detail": {"posture": "lying"}}
+{"event_type": "bed_exit", "location": "room_301", "source": "wristband_03", "confidence": 0.41, "occurred_at": "2026-03-02T05:45:00", "detail": {"minutes_out_of_bed": 2}}

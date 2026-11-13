@@ -1,0 +1,5 @@
+{"event_type": "aisle_blocked", "location": "aisle_01", "source": "camera_01", "confidence": 0.91, "occurred_at": "2026-03-02T09:15:00", "detail": {"duration_seconds": 45}}
+{"event_type": "no_helmet", "location": "aisle_02", "source": "camera_02", "confidence": 0.88, "occurred_at": "2026-03-02T09:20:00", "detail": {"person_count": 1}}
+{"event_type": "aisle_blocked", "location": "aisle_02", "source": "camera_02", "confidence": 0.67, "occurred_at": "2026-03-02T10:05:00", "detail": {"duration_seconds": 12}}
+{"event_type": "aisle_blocked", "location": "aisle_01", "source": "camera_01", "confidence": 0.95, "occurred_at": "2026-03-02T13:30:00", "detail": {"duration_seconds": 120}}
+{"event_type": "no_helmet", "location": "aisle_01", "source": "camera_01", "confidence": 0.42, "occurred_at": "2026-03-02T14:10:00", "detail": {"person_count": 2}}
