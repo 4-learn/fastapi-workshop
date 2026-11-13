@@ -16,17 +16,20 @@ from app.schemas.event import DetectionEvent
 
 DATA_PATH = Path(__file__).parent.parent / "data" / f"{PROFILE_NAME}.jsonl"
 
+# 讀進這條線的 5 筆事件，每一筆都先過合約
+events = []
+for line in DATA_PATH.read_text(encoding="utf-8").splitlines():
+    events.append(DetectionEvent(**json.loads(line)))
+
 # 教學用：每次執行都先刪掉再重建，輸出才會一樣
 Base.metadata.drop_all(engine)
 Base.metadata.create_all(engine)
 print("1. 建立資料表 detection_events、alerts")
 print("---")
 
-# 把這條線的 5 筆事件存進去，每筆事件開一筆告警
 with Session(engine) as session:
     rows = []
-    for line in DATA_PATH.read_text(encoding="utf-8").splitlines():
-        event = DetectionEvent(**json.loads(line))  # 先過合約，再進資料庫
+    for event in events:
         row = Event(**event.model_dump())
         session.add(row)
         rows.append(row)
@@ -43,20 +46,20 @@ with Session(engine) as session:
 print("2. 新增 5 筆事件、5 筆告警")
 print("---")
 
-# 查詢：第一個位置的事件，照發生時間排
+# 查詢：第一個位置的事件（照發生時間排）和告警
 location = PROFILE["locations"][0]
 with Session(engine) as session:
     stmt = select(Event).where(Event.location == location).order_by(Event.occurred_at)
-    events = session.scalars(stmt).all()
+    found_events = session.scalars(stmt).all()
     stmt = select(Alert).where(Alert.location == location).order_by(Alert.id)
-    alerts = session.scalars(stmt).all()
+    found_alerts = session.scalars(stmt).all()
 
 print(f"3. {location} 的事件：")
-for e in events:
+for e in found_events:
     print(e.id, e.event_type, e.confidence, e.occurred_at, e.detail)
 print("---")
 print(f"4. {location} 的告警：")
-for a in alerts:
+for a in found_alerts:
     print(a.id, a.event_id, a.event_type, a.status)
 
 engine.dispose()  # 用完把連線關掉
