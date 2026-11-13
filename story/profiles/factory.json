@@ -1,0 +1,9 @@
+{
+  "customer": "factory",
+  "handler_role": "值班主管",
+  "locations": ["aisle_01", "aisle_02"],
+  "event_types": {
+    "aisle_blocked": {"severity": "medium", "escalate_after_minutes": 10},
+    "no_helmet": {"severity": "high", "escalate_after_minutes": 10}
+  }
+}
