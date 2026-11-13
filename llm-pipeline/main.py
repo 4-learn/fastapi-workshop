@@ -60,8 +60,8 @@ def fake_llm_summarize(data: dict) -> str:
 # TODO 2: 實作 Service
 # --------------------------------------------------
 def prepare_features(user_id: int) -> dict:
-    """從 events.csv 整理使用者特徵"""
-    # TODO: 讀 CSV、篩選 user、回傳 dict
+    """從 events.csv 整理使用者特徵（只算交易）"""
+    # TODO: 讀 CSV、篩選 user 和 event_type == "transaction"、回傳 dict
     pass
 
 
@@ -70,8 +70,9 @@ def evaluate_risk(user_id: int):
     Pipeline 1: 推論
 
     流程：prepare_features → fake_ai_predict → 防呆判斷 → 回傳
-    防呆規則：
-    - confidence >= 0.8 → auto_flag
+    防呆規則（由上往下判斷）：
+    - risk_level 是 low_risk → none
+    - risk_level 是 high_risk 且 confidence >= 0.8 → auto_flag
     - confidence >= 0.6 → require_review
     - 其他 → defer
     """
