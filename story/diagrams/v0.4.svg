@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 880" width="1440" height="880">
+<defs>
+<marker id="arr-old" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a9099"/></marker>
+<marker id="arr-new" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f9d4c"/></marker>
+<marker id="arr-changed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d9901a"/></marker>
+<marker id="arr-error" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d33a3a"/></marker>
+</defs>
+<rect width="1440" height="880" fill="#ffffff"/>
+<text x="24" y="40" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="22" fill="#1f2328" font-weight="bold" text-anchor="start">v0.4　事件格式是一份合約</text>
+<text x="24" y="64" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="13" fill="#6b7280" font-weight="normal" text-anchor="start">這一章：Pydantic　｜　箭頭 = 資料往哪裡走　｜　小標籤 = 第幾版出現</text>
+<rect x="760" y="27" width="16" height="16" rx="3" fill="#f4f5f7" stroke="#a3a8b0" stroke-width="1.5"/>
+<text x="782" y="40" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="12" fill="#444" font-weight="normal" text-anchor="start">之前就有</text>
+<rect x="872" y="27" width="16" height="16" rx="3" fill="#e3f7e8" stroke="#1f9d4c" stroke-width="1.5"/>
+<text x="894" y="40" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="12" fill="#444" font-weight="normal" text-anchor="start">這一章新增</text>
+<rect x="984" y="27" width="16" height="16" rx="3" fill="#fff4dc" stroke="#d9901a" stroke-width="1.5"/>
+<text x="1006" y="40" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="12" fill="#444" font-weight="normal" text-anchor="start">這一章改了</text>
+<line x1="1096" y1="35" x2="1126" y2="35" stroke="#8a9099" stroke-width="1.6" stroke-dasharray="5 4"/>
+<text x="1132" y="40" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="12" fill="#444" font-weight="normal" text-anchor="start">背景執行</text>
+<line x1="1200" y1="35" x2="1230" y2="35" stroke="#d33a3a" stroke-width="1.6" stroke-dasharray="5 4"/>
+<text x="1236" y="40" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="12" fill="#444" font-weight="normal" text-anchor="start">錯誤回應</text>
+<rect x="280" y="100" width="880" height="720" rx="16" fill="#fbfbfc" stroke="#9aa0a8" stroke-width="1.3"/>
+<text x="296" y="128" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="16" fill="#1f2328" font-weight="bold" text-anchor="start">告警平台</text>
+<rect x="1016" y="112" width="130" height="26" rx="13" fill="#ffffff" stroke="#a3a8b0" stroke-width="1.3"/>
+<text x="1081" y="128.78" font-family="'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="10.5" fill="#3a3f47" font-weight="normal" text-anchor="middle">GET /health</text>
+<rect x="30" y="180" width="190" height="160" rx="12" fill="#ffffff" stroke="#a3a8b0" stroke-width="1.3"/>
+<text x="125" y="256" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="15" fill="#3a3f47" font-weight="bold" text-anchor="middle">設備</text>
+<text x="125" y="272" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="10.5" fill="#3a3f47" font-weight="normal" text-anchor="middle">攝影機／手環</text>
+<rect x="292" y="190" width="186" height="32" rx="16" fill="#ffffff" stroke="#a3a8b0" stroke-width="1.3"/>
+<text x="385" y="209.78" font-family="'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="10.5" fill="#3a3f47" font-weight="normal" text-anchor="middle">POST /events</text>
+<rect x="516" y="206" width="128" height="56" rx="8" fill="#e3f7e8" stroke="#1f9d4c" stroke-width="2"/>
+<text x="580" y="231" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="13.5" fill="#0f5132" font-weight="bold" text-anchor="middle">合約</text>
+<text x="580" y="245" font-family="'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="10.5" fill="#0f5132" font-weight="normal" text-anchor="middle">Pydantic</text>
+<rect x="700" y="410" width="200" height="56" rx="8" fill="#f4f5f7" stroke="#a3a8b0" stroke-width="1.3"/>
+<text x="800" y="435" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="13.5" fill="#3a3f47" font-weight="bold" text-anchor="middle">通知值班人員</text>
+<text x="800" y="449" font-family="'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="10.5" fill="#3a3f47" font-weight="normal" text-anchor="middle">await asyncio.sleep(2)</text>
+<rect x="506" y="724" width="300" height="86" rx="6" fill="#f4f5f7" stroke="#a3a8b0" stroke-width="1.3"/><path d="M506,732 h300" stroke="#a3a8b0" stroke-width="1"/>
+<text x="656" y="764" font-family="'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="10.5" fill="#3a3f47" font-weight="bold" text-anchor="middle">Python list</text>
+<text x="656" y="778" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="10.5" fill="#3a3f47" font-weight="normal" text-anchor="middle">events = []，server 重開就清空</text>
+<rect x="966" y="190" width="186" height="40" rx="20" fill="#ffffff" stroke="#a3a8b0" stroke-width="1.3"/>
+<text x="1059" y="207" font-family="'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="10.5" fill="#3a3f47" font-weight="normal" text-anchor="middle">GET /events/{id}</text>
+<text x="1059" y="221" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="10.5" fill="#3a3f47" font-weight="normal" text-anchor="middle">GET /locations/…</text>
+<rect x="1222" y="180" width="196" height="340" rx="12" fill="#ffffff" stroke="#a3a8b0" stroke-width="1.3"/>
+<text x="1320" y="338" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="15" fill="#3a3f47" font-weight="bold" text-anchor="middle">值班人員</text>
+<text x="1320" y="354" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="10.5" fill="#3a3f47" font-weight="normal" text-anchor="middle">主管／護理師</text>
+<text x="1320" y="370" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="10.5" fill="#3a3f47" font-weight="normal" text-anchor="middle">（App）</text>
+<polyline points="220,206 292,206" fill="none" stroke="#8a9099" stroke-width="1.4" marker-end="url(#arr-old)"/>
+<text x="256" y="200" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="10.5" fill="#3a3f47" text-anchor="middle" stroke="#fff" stroke-width="4" paint-order="stroke">送事件</text>
+<polyline points="478,206 494,206 494,234 516,234" fill="none" stroke="#1f9d4c" stroke-width="1.8" marker-end="url(#arr-new)"/>
+<polyline points="580,262 580,724" fill="none" stroke="#1f9d4c" stroke-width="1.8" marker-end="url(#arr-new)"/>
+<polyline points="644,248 672,248 672,438 700,438" fill="none" stroke="#1f9d4c" stroke-width="1.8" marker-end="url(#arr-new)"/>
+<polyline points="900,438 1222,438" fill="none" stroke="#8a9099" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arr-old)"/>
+<text x="1060" y="432" font-family="'PingFang TC','Noto Sans TC','Noto Sans CJK TC','Microsoft JhengHei',sans-serif" font-size="10.5" fill="#3a3f47" text-anchor="middle" stroke="#fff" stroke-width="4" paint-order="stroke">通知（等 2 秒）</text>
+<polyline points="1152,210 1222,210" fill="none" stroke="#8a9099" stroke-width="1.4" marker-end="url(#arr-old)"/>
+<rect x="1114.4" y="104" width="35.6" height="15" rx="7.5" fill="#e9ebee"/><text x="1132.2" y="115.5" font-family="'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="10" fill="#5b616b" font-weight="normal" text-anchor="middle">v0.1</text>
+<rect x="188.4" y="172" width="35.6" height="15" rx="7.5" fill="#e9ebee"/><text x="206.2" y="183.5" font-family="'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="10" fill="#5b616b" font-weight="normal" text-anchor="middle">v0.1</text>
+<rect x="446.4" y="182" width="35.6" height="15" rx="7.5" fill="#e9ebee"/><text x="464.2" y="193.5" font-family="'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="10" fill="#5b616b" font-weight="normal" text-anchor="middle">v0.1</text>
+<rect x="612.4" y="198" width="35.6" height="15" rx="7.5" fill="#1f9d4c"/><text x="630.2" y="209.5" font-family="'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="10" fill="#fff" font-weight="normal" text-anchor="middle">v0.4</text>
+<rect x="868.4" y="402" width="35.6" height="15" rx="7.5" fill="#e9ebee"/><text x="886.2" y="413.5" font-family="'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="10" fill="#5b616b" font-weight="normal" text-anchor="middle">v0.3</text>
+<rect x="774.4" y="716" width="35.6" height="15" rx="7.5" fill="#e9ebee"/><text x="792.2" y="727.5" font-family="'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="10" fill="#5b616b" font-weight="normal" text-anchor="middle">v0.1</text>
+<rect x="1120.4" y="182" width="35.6" height="15" rx="7.5" fill="#e9ebee"/><text x="1138.2" y="193.5" font-family="'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="10" fill="#5b616b" font-weight="normal" text-anchor="middle">v0.2</text>
+<rect x="1386.4" y="172" width="35.6" height="15" rx="7.5" fill="#e9ebee"/><text x="1404.2" y="183.5" font-family="'SF Mono',Menlo,Consolas,'DejaVu Sans Mono',monospace" font-size="10" fill="#5b616b" font-weight="normal" text-anchor="middle">v0.2</text>
+</svg>
