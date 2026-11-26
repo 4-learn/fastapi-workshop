@@ -68,18 +68,12 @@ UNRESOLVED = ["open", "pending_review", "acknowledged"]  # 還沒結案的狀態
 
 def build_handover_prompt(summary: dict, handler_role: str) -> str:
     """把統計數字組成要交給 LLM 的 prompt。只放統計，不放任何一筆事件的細節。"""
-    type_parts = []
-    for name, stats in summary["by_event_type"].items():
-        type_parts.append(f"{name} {stats['count']} 筆（平均信心值 {stats['avg_confidence']}）")
-    types = "、".join(type_parts)
-    location_parts = []
-    for name, count in summary["by_location"].items():
-        location_parts.append(f"{name} {count} 筆")
-    locations = "、".join(location_parts)
-    status_parts = []
-    for name, count in summary["alerts_by_status"].items():
-        status_parts.append(f"{name} {count} 筆")
-    statuses = "、".join(status_parts)
+    types = "、".join(
+        f"{name} {s['count']} 筆（平均信心值 {s['avg_confidence']}）"
+        for name, s in summary["by_event_type"].items()
+    )
+    locations = "、".join(f"{name} {count} 筆" for name, count in summary["by_location"].items())
+    statuses = "、".join(f"{name} {count} 筆" for name, count in summary["alerts_by_status"].items())
     return (
         f"你是{handler_role}的交班助理。請根據下面的統計寫一段交班摘要，三句話以內。\n"
         f"只能使用提供的數字，不要推測原因，不要加上沒有提供的資訊。\n"
@@ -94,15 +88,8 @@ def build_handover_prompt(summary: dict, handler_role: str) -> str:
 def fake_llm_summarize(summary: dict) -> str:
     """模擬 LLM 把統計寫成一段話（正式環境換成真正的模型呼叫）"""
     statuses = summary["alerts_by_status"]
-    unresolved = 0
-    for status in UNRESOLVED:
-        unresolved += statuses.get(status, 0)
-    busiest = None
-    highest_count = -1
-    for name, count in summary["by_location"].items():
-        if count > highest_count:
-            busiest = name
-            highest_count = count
+    unresolved = sum(statuses.get(s, 0) for s in UNRESOLVED)
+    busiest = max(summary["by_location"], key=summary["by_location"].get)
     return (
         f"本班共收到 {summary['total_events']} 筆事件，"
         f"開了 {summary['total_alerts']} 筆告警，"
